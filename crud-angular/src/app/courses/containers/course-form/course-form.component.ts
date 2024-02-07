@@ -1,11 +1,11 @@
 import { Location, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  UntypedFormArray,
-  Validators
+    FormGroup,
+    NonNullableFormBuilder,
+    ReactiveFormsModule,
+    UntypedFormArray,
+    Validators
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,8 +19,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute } from '@angular/router';
 
-import { Course } from '../../model/course';
-import { Lesson } from '../../model/lesson';
+import { Course } from '../../model/course-collection';
+import { Lesson } from '../../model/lesson-collection';
 import { CoursesService } from '../../services/courses.service';
 import { ErrorDialogComponent } from './../../../shared/components/error-dialog/error-dialog.component';
 import { FormUtilsService } from './../../../shared/services/form-utils.service';

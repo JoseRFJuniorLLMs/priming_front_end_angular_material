@@ -1,4 +1,4 @@
-import { Course } from '../model/course';
+import { Course } from '../model/course-collection';
 import { CoursePage } from '../model/course-page';
 
 export const coursesMock: Course[] = [

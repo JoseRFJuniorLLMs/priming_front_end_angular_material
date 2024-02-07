@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { Course } from '../model/course';
+import { Course } from '../model/course-collection';
 import { CoursesService } from '../services/courses.service';
 
 @Injectable({
@@ -16,6 +16,14 @@ export class CourseResolver {
       return this.service.loadById(route.params['id']);
     }
 
-    return of({ _id: '', name: '', category: '', lessons: [] });
+    // Initialize a default Course object with default values
+    const defaultCourse: Course = {
+      _id: '',
+      name: '',
+      objective: '',
+      category: '',
+    };
+
+    return of(defaultCourse);
   }
 }
