@@ -22,18 +22,6 @@ Main Page with Pagination
   <img src="./docs/main.jpeg" alt="Main Page" width="100%">
 </p>
 
-Form with One to Many (Course-Lessons)
-
-<p align="center">
-  <img src="./docs/form.jpeg" alt="Form Page" width="100%">
-</p>
-
-View Page with Youtube Player
-
-<p align="center">
-  <img src="./docs/view.jpeg" alt="View Page" width="100%">
-</p>
-
 ### Executing the front-end
 
 You need to have Node.js / NPM installed locally.
