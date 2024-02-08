@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, of } from 'rxjs';
-import { AlunoCollection } from '../model/aluno-collection';
+import { AlunoCollection } from '../model/student-collection';
 
 @Injectable({
   providedIn: 'root'

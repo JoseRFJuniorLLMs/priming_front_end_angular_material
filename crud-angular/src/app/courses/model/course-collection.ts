@@ -1,10 +1,10 @@
-import { Lesson } from './lesson-collection';
+import { LessonCollection } from './lesson-collection';
 
 export interface Course {
   _id: string;
   name: string;
   objective: string;
-  content?: Lesson[];
-  lessons?: Lesson[];
+  content?: LessonCollection[];
+  lessons?: LessonCollection[];
   category: string;
 }

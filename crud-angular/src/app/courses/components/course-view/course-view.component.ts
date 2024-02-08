@@ -1,12 +1,12 @@
 import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ElementRef,
-    NO_ERRORS_SCHEMA,
-    OnInit,
-    ViewChild
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NO_ERRORS_SCHEMA,
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { Course } from '../../model/course-collection';
-import { Lesson } from '../../model/lesson-collection';
+import { LessonCollection } from '../../model/lesson-collection';
 
 @Component({
   selector: 'app-course-view',
@@ -36,7 +36,7 @@ import { Lesson } from '../../model/lesson-collection';
 })
 export class CourseViewComponent implements OnInit, AfterViewInit {
   course!: Course;
-  selectedLesson!: Lesson;
+  selectedLesson!: LessonCollection;
   videoHeight!: number;
   videoWidth!: number;
 
@@ -68,11 +68,11 @@ export class CourseViewComponent implements OnInit, AfterViewInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  display(lesson: Lesson) {
+  display(lesson: LessonCollection) {
     this.selectedLesson = lesson;
   }
 
-  displaySelectedLesson(lesson: Lesson) {
+  displaySelectedLesson(lesson: LessonCollection) {
     return this.selectedLesson === lesson;
   }
 }

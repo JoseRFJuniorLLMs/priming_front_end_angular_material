@@ -20,7 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute } from '@angular/router';
 
 import { Course } from '../../model/course-collection';
-import { Lesson } from '../../model/lesson-collection';
+import { LessonCollection } from '../../model/lesson-collection';
 import { CoursesService } from '../../services/courses.service';
 import { ErrorDialogComponent } from './../../../shared/components/error-dialog/error-dialog.component';
 import { FormUtilsService } from './../../../shared/services/form-utils.service';
@@ -81,7 +81,7 @@ export class CourseFormComponent implements OnInit {
     return lessons;
   }
 
-  private createLesson(lesson: Lesson = { _id: '', name: '', youtubeUrl: '' }) {
+  private createLesson(lesson: LessonCollection = { _id: '', name: '', youtubeUrl: '' }) {
     return this.formBuilder.group({
       _id: [lesson._id],
       name: [

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AlunoCollection } from '../../model/aluno-collection';
+import { AlunoCollection } from '../../model/student-collection';
 
 @Component({
   selector: 'app-students-list',

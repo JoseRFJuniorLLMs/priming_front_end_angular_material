@@ -1,5 +1,5 @@
 
-export interface AlunoCollection {
+export interface StudentCollection {
   id: string;
   nome: string;
   cpf: string;

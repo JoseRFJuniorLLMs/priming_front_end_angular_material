@@ -1,0 +1,42 @@
+<mat-table [dataSource]="modulos">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let modulo"> {{ modulo.id }} </mat-cell>
+    </ng-container>
+  
+    <!-- Prime Column -->
+    <ng-container matColumnDef="prime">
+      <mat-header-cell *matHeaderCellDef> Prime </mat-header-cell>
+      <mat-cell *matCellDef="let modulo"> {{ modulo.prime }} </mat-cell>
+    </ng-container>
+  
+    <!-- Target Column -->
+    <ng-container matColumnDef="target">
+      <mat-header-cell *matHeaderCellDef> Target </mat-header-cell>
+      <mat-cell *matCellDef="let modulo"> {{ modulo.target }} </mat-cell>
+    </ng-container>
+  
+    <!-- Text Column -->
+    <ng-container matColumnDef="text">
+      <mat-header-cell *matHeaderCellDef> Text </mat-header-cell>
+      <mat-cell *matCellDef="let modulo"> {{ modulo.text }} </mat-cell>
+    </ng-container>
+  
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let modulo" class="action-column">
+        <button mat-icon-button color="primary" aria-label="Edit Modulo" (click)="onEdit(modulo)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" aria-label="Remove Modulo" (click)="onRemove(modulo)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let modulo; columns: displayedColumns"></mat-row>
+  </mat-table>
+  

@@ -1,0 +1,37 @@
+<mat-table [dataSource]="lessons">
+  <!-- ID Column -->
+  <ng-container matColumnDef="_id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let lesson"> {{ lesson._id }} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let lesson"> {{ lesson.name }} </mat-cell>
+  </ng-container>
+
+  <!-- YouTube URL Column -->
+  <ng-container matColumnDef="youtubeUrl">
+    <mat-header-cell *matHeaderCellDef> YouTube URL </mat-header-cell>
+    <mat-cell *matCellDef="let lesson">
+      <a [href]="lesson.youtubeUrl" target="_blank">{{ lesson.youtubeUrl }}</a>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell *matCellDef="let lesson" class="action-column">
+      <button mat-icon-button color="primary" aria-label="Edit Lesson" (click)="onEdit(lesson)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Remove Lesson" (click)="onRemove(lesson)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let lesson; columns: displayedColumns"></mat-row>
+</mat-table>
