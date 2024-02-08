@@ -1,10 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { CategoryPipe } from '../../../shared/pipes/category.pipe';
 import { LessonCollection } from '../../model/lesson-collection';
 
 @Component({
   selector: 'app-lessons-list',
   templateUrl: './lessons-list.component.html',
-  styleUrls: ['./lessons-list.component.scss']
+  styleUrls: ['./lessons-list.component.scss'],
+  standalone: true,
+  imports: [MatTableModule, MatIconModule, MatButtonModule, CategoryPipe]
 })
 export class LessonCollectionsListComponent {
   @Input() lessons: LessonCollection[] = [];
