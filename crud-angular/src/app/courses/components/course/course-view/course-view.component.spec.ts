@@ -7,7 +7,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
-import { coursesMock } from './../../services/courses.mock';
+import { coursesMock } from '../../../services/courses.mock';
 import { CourseViewComponent } from './course-view.component';
 
 /* tslint:disable:no-unused-variable */

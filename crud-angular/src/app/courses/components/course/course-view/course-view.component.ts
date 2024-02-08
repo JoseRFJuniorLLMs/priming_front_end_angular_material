@@ -15,8 +15,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { NgFor, NgIf } from '@angular/common';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-import { Course } from '../../model/course-collection';
-import { LessonCollection } from '../../model/lesson-collection';
+import { Course } from '../../../model/course-collection';
+import { LessonCollection } from '../../../model/lesson-collection';
 
 @Component({
   selector: 'app-course-view',

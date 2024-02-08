@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { coursesMock } from './../../services/courses.mock';
+import { coursesMock } from '../../../services/courses.mock';
 import { CoursesListComponent } from './courses-list.component';
 
 describe('CoursesListComponent', () => {
