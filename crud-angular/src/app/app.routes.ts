@@ -5,5 +5,13 @@ export const APP_ROUTES: Routes = [
   {
     path: 'courses',
     loadChildren: () => import('./courses/courses.routes').then(m => m.COURSES_ROUTES)
+  },
+  {
+    path: 'students',
+    loadChildren: () => import('./courses/courses.routes').then(m => m.COURSES_ROUTES)
+  },
+  {
+  path: 'models',
+    loadChildren: () => import('./courses/courses.routes').then(m => m.COURSES_ROUTES)
   }
 ];
