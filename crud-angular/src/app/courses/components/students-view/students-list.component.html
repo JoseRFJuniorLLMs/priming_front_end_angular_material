@@ -1,22 +1,22 @@
-<mat-table [dataSource]="alunos">
+<mat-table [dataSource]="students">
     <!-- Name Column -->
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
-      <mat-cell *matCellDef="let aluno">
-        <a (click)="onView(aluno)">{{ aluno.nome }}</a>
+      <mat-cell *matCellDef="let student">
+        <a (click)="onView(student)">{{ student.nome }}</a>
       </mat-cell>
     </ng-container>
   
     <!-- CPF Column -->
     <ng-container matColumnDef="cpf">
       <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
-      <mat-cell *matCellDef="let aluno">{{ aluno.cpf }}</mat-cell>
+      <mat-cell *matCellDef="let student">{{ student.cpf }}</mat-cell>
     </ng-container>
   
     <!-- Curso Column -->
     <ng-container matColumnDef="curso">
       <mat-header-cell *matHeaderCellDef>Curso</mat-header-cell>
-      <mat-cell *matCellDef="let aluno">{{ aluno.curso }}</mat-cell>
+      <mat-cell *matCellDef="let student">{{ student.curso }}</mat-cell>
     </ng-container>
   
     <!-- Actions Column -->
@@ -25,7 +25,7 @@
         <button
           mat-mini-fab
           color="accent"
-          aria-label="Adicionar um novo aluno"
+          aria-label="Adicionar um novo student"
           (click)="onAdd()"
           class="action-column-header">
           <mat-icon>add</mat-icon>
@@ -40,12 +40,12 @@
         </button>
       </mat-header-cell>
   
-      <mat-cell *matCellDef="let aluno" class="action-column">
+      <mat-cell *matCellDef="let student" class="action-column">
         <button
           mat-icon-button
           color="primary"
           aria-label="Editar Aluno"
-          (click)="onEdit(aluno)">
+          (click)="onEdit(student)">
           <mat-icon>edit</mat-icon>
         </button>
   
@@ -53,7 +53,7 @@
           mat-icon-button
           color="warn"
           aria-label="Remover Aluno"
-          (click)="onRemove(aluno)">
+          (click)="onRemove(student)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>

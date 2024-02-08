@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AlunoCollection } from '../../model/student-collection';
+import { StudentCollection } from '../../model/student-collection';
 
 @Component({
   selector: 'app-students-list',
@@ -7,16 +7,16 @@ import { AlunoCollection } from '../../model/student-collection';
   styleUrls: ['./students-list.component.scss']
 })
 export class StudentsListComponent {
-  @Input() alunos: AlunoCollection[] = [];
-  @Output() details: EventEmitter<AlunoCollection> = new EventEmitter(false);
-  @Output() edit: EventEmitter<AlunoCollection> = new EventEmitter(false);
-  @Output() remove: EventEmitter<AlunoCollection> = new EventEmitter(false);
+  @Input() students: StudentCollection[] = [];
+  @Output() details: EventEmitter<StudentCollection> = new EventEmitter(false);
+  @Output() edit: EventEmitter<StudentCollection> = new EventEmitter(false);
+  @Output() remove: EventEmitter<StudentCollection> = new EventEmitter(false);
   @Output() add: EventEmitter<boolean> = new EventEmitter(false);
-  @Output() view: EventEmitter<AlunoCollection> = new EventEmitter(false);
+  @Output() view: EventEmitter<StudentCollection> = new EventEmitter(false);
 
   readonly displayedColumns = ['nome', 'cpf', 'curso', 'actions'];
 
-  onDetails(record: AlunoCollection) {
+  onDetails(record: StudentCollection) {
     this.details.emit(record);
   }
 
@@ -24,15 +24,15 @@ export class StudentsListComponent {
     this.add.emit(true);
   }
 
-  onEdit(record: AlunoCollection) {
+  onEdit(record: StudentCollection) {
     this.edit.emit(record);
   }
 
-  onRemove(record: AlunoCollection) {
+  onRemove(record: StudentCollection) {
     this.remove.emit(record);
   }
 
-  onView(record: AlunoCollection) {
+  onView(record: StudentCollection) {
     this.view.emit(record);
   }
 }
