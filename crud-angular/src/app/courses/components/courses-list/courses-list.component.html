@@ -29,6 +29,15 @@
         class="action-column-header">
         <mat-icon>add</mat-icon>
       </button>
+      <button
+      mat-mini-fab
+      color="accent"
+      aria-label="Add a new Course"
+      (click)="onAdd()"
+      class="action-column-header">
+      <mat-icon>settings</mat-icon>
+    </button>
+    
     </mat-header-cell>
 
     <mat-cell *matCellDef="let course" class="action-column">
