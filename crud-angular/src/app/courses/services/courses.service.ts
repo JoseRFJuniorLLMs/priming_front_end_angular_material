@@ -10,8 +10,8 @@ import { CoursePage } from '../model/course-page';
   providedIn: 'root'
 })
 export class CoursesService {
-  //private readonly API = '/api/courses';
-  private readonly API = AppConfig.urlAlunoInfo2;
+  
+  private readonly API = AppConfig.urlCourse;
 
   private cache: Course[] = [];
 

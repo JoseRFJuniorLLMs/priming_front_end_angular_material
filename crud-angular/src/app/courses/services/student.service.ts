@@ -9,8 +9,7 @@ import { StudentCollection } from '../model/student-collection';
 })
 export class StudentService {
   private readonly API = AppConfig.urlCourse;
-  //private readonly API = 'http://localhost:8080/api/aluno'; // Definindo a URL diretamente
-
+  
   private cache: StudentCollection[] = [];
 
   constructor(private http: HttpClient) { }
