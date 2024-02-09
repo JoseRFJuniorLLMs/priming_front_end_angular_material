@@ -1,30 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, of } from 'rxjs';
+import { AppConfig } from 'src/app/app-config';
 import { StudentCollection } from '../model/student-collection';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
-  //private readonly API = AppConfig.urlAlunoInfo2;
-  private readonly API = 'http://localhost:8080/api/aluno'; // Definindo a URL diretamente
+  private readonly API = AppConfig.urlCourse;
+  //private readonly API = 'http://localhost:8080/api/aluno'; // Definindo a URL diretamente
 
   private cache: StudentCollection[] = [];
 
   constructor(private http: HttpClient) { }
-/*
+
   list(page = 0, pageSize = 10) {
     return this.http.get<StudentCollection[]>(this.API, { params: { page: page.toString(), pageSize: pageSize.toString() } }).pipe(
       first(),
     );
   }
-*/
-list() {
-  return this.http.get<StudentCollection[]>(this.API).pipe(
-    tap(data => console.log('Dados recebidos:', data)) // Log do objeto recebido
-  );
-}
+
 
   loadById(id: string) {
     if (this.cache.length > 0) {

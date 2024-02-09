@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, of, tap } from 'rxjs';
 
+import { AppConfig } from 'src/app/app-config';
 import { Course } from '../model/course-collection';
 import { CoursePage } from '../model/course-page';
 
@@ -9,7 +10,8 @@ import { CoursePage } from '../model/course-page';
   providedIn: 'root'
 })
 export class CoursesService {
-  private readonly API = '/api/courses';
+  //private readonly API = '/api/courses';
+  private readonly API = AppConfig.urlAlunoInfo2;
 
   private cache: Course[] = [];
 
@@ -18,7 +20,7 @@ export class CoursesService {
   list(page = 0, pageSize = 10) {
     return this.http.get<CoursePage>(this.API, { params: { page, pageSize } }).pipe(
       first(),
-      // map(data => data.courses),
+      //map(data => data.courses),
       tap(data => (this.cache = data.courses))
     );
   }
