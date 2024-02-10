@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { first, of, tap } from 'rxjs';
 
 import { AppConfig } from 'src/app/app-config';
-import { Course } from '../model/couse/course-collection';
-import { CoursePage } from '../model/couse/course-page';
+import { Course } from '../model/course/course';
+import { CoursePage } from '../model/course/course-page';
 
 @Injectable({
   providedIn: 'root'

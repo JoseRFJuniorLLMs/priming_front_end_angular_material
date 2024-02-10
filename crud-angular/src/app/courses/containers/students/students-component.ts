@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
-import { StudentCollection } from '../../model/student-collection';
+import { Student } from '../../model/student/student';
 import { StudentService } from '../../services/student.service';
 
 import { AsyncPipe, NgIf } from '@angular/common';
@@ -21,7 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatToolbarModule,
     NgIf,
-    CoursesListComponent,
+    StudentsListComponent,
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatDialogModule,
@@ -31,9 +31,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 
 export class StudentsListComponent implements OnInit {
-  @Input() students: StudentCollection[] = [];
-  @Output() edit: EventEmitter<StudentCollection> = new EventEmitter();
-  @Output() remove: EventEmitter<StudentCollection> = new EventEmitter();
+  @Input() students: Student[] = [];
+  @Output() edit: EventEmitter<Student> = new EventEmitter();
+  @Output() remove: EventEmitter<Student> = new EventEmitter();
+  @Output() details: EventEmitter<Student> = new EventEmitter(false);
+  @Output() add: EventEmitter<boolean> = new EventEmitter(false);
+  @Output() view: EventEmitter<Student> = new EventEmitter(false);
 
   readonly displayedColumns = ['id', 'name', 'cpf', 'courses', 'prime', 'actions'];
 
@@ -49,7 +52,7 @@ export class StudentsListComponent implements OnInit {
 
   loadStudents() {
     this.studentService.list().subscribe(
-      (students: StudentCollection[]) => {
+      (students: Student[]) => {
         this.students = students;
       },
       (error: any) => {
@@ -58,11 +61,11 @@ export class StudentsListComponent implements OnInit {
     );
   }
 
-  onEdit(student: StudentCollection) {
+  onEdit(student: Student) {
     this.edit.emit(student);
   }
 
-  onRemove(student: StudentCollection) {
+  onRemove(student: Student) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Are you sure you would like to remove this student?'
     });

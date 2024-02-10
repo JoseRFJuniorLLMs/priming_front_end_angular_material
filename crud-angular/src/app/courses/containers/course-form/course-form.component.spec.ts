@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 
-import { Course } from '../../model/couse/course-collection';
+import { Course } from '../../model/course/course';
 import { coursesMock, coursesPageMock } from '../../services/courses.mock';
 import { CoursesService } from '../../services/courses.service';
 import { CourseFormComponent } from './course-form.component';

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { Course } from '../model/couse/course-collection';
+import { Course } from '../model/course/course';
 import { CoursesService } from '../services/courses.service';
 import { CourseResolver } from './course.resolver';
 

@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryPipe } from '../../../../shared/pipes/category.pipe';
-import { LessonCollection } from '../../../model/lesson/lesson-collection';
+import { Lesson } from '../../../model/lesson/lesson';
 
 @Component({
   selector: 'app-lessons-list',
@@ -12,18 +12,18 @@ import { LessonCollection } from '../../../model/lesson/lesson-collection';
   standalone: true,
   imports: [MatTableModule, MatIconModule, MatButtonModule, CategoryPipe]
 })
-export class LessonCollectionsListComponent {
-  @Input() lessons: LessonCollection[] = [];
-  @Output() edit: EventEmitter<LessonCollection> = new EventEmitter();
-  @Output() remove: EventEmitter<LessonCollection> = new EventEmitter();
+export class LessonListComponent {
+  @Input() lessons: Lesson[] = [];
+  @Output() edit: EventEmitter<Lesson> = new EventEmitter();
+  @Output() remove: EventEmitter<Lesson> = new EventEmitter();
 
   readonly displayedColumns = ['_id', 'name', 'youtubeUrl', 'actions'];
 
-  onEdit(lesson: LessonCollection) {
+  onEdit(lesson: Lesson) {
     this.edit.emit(lesson);
   }
 
-  onRemove(lesson: LessonCollection) {
+  onRemove(lesson: Lesson) {
     this.remove.emit(lesson);
   }
 }

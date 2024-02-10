@@ -15,8 +15,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { NgFor, NgIf } from '@angular/common';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-import { Course } from '../../../model/couse/course-collection';
-import { LessonCollection } from '../../../model/lesson/lesson-collection';
+import { Course } from '../../../model/course/course';
+import { Lesson } from '../../../model/lesson/lesson';
 
 @Component({
   selector: 'app-course-view',
@@ -36,7 +36,7 @@ import { LessonCollection } from '../../../model/lesson/lesson-collection';
 })
 export class CourseViewComponent implements OnInit, AfterViewInit {
   course!: Course;
-  selectedLesson!: LessonCollection;
+  selectedLesson!: Lesson;
   videoHeight!: number;
   videoWidth!: number;
 
@@ -68,11 +68,11 @@ export class CourseViewComponent implements OnInit, AfterViewInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  display(lesson: LessonCollection) {
+  display(lesson: Lesson) {
     this.selectedLesson = lesson;
   }
 
-  displaySelectedLesson(lesson: LessonCollection) {
+  displaySelectedLesson(lesson: Lesson) {
     return this.selectedLesson === lesson;
   }
 }

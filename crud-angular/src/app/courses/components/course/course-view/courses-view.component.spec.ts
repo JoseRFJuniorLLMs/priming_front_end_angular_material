@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
 import { coursesMock } from '../../../services/courses.mock';
-import { CourseViewComponent } from './course-view.component';
+import { CourseViewComponent } from './courses-view.component';
 
 /* tslint:disable:no-unused-variable */
 describe('CourseViewComponent', () => {

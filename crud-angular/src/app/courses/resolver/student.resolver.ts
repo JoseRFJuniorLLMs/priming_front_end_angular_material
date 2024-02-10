@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { StudentCollection } from '../model/student-collection';
+import { Student } from '../model/student/student';
 import { StudentService } from '../services/student.service';
 
 @Injectable({
@@ -14,18 +14,15 @@ export class StudentResolver {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<StudentCollection> {
+  ): Observable<Student> {
     if (route.params && route.params['id']) {
       return this.studentService.loadById(route.params['id']);
     }
 
-    const defaultStudent: StudentCollection = {
-      id: '',
-      nome: '',
-      cpf: '',
-      curso: [],
-      prime: []
-    };
+    const defaultStudent: Student = {
+      _id: '',
+      nome: ''
+     };
 
     return of(defaultStudent);
   }

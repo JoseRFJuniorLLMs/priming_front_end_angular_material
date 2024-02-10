@@ -1,4 +1,4 @@
-import { Course } from './course-collection';
+import { Course } from './student';
 
 export interface CoursePage {
   courses: Course[];

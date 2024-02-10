@@ -12,8 +12,8 @@ import { Observable, catchError, of, tap } from 'rxjs';
 import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
 import { CoursesListComponent } from '../../components/course/courses-list/courses-list.component';
-import { Course } from '../../model/couse/course-collection';
-import { CoursePage } from '../../model/couse/course-page';
+import { Course } from '../../model/course/course';
+import { CoursePage } from '../../model/course/course-page';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({
