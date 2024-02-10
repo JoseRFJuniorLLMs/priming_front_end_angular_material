@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, of } from 'rxjs';
+import { first, of, tap } from 'rxjs';
+
 import { AppConfig } from 'src/app/app-config';
 import { Student } from '../model/student/student';
+import { StudentPage } from '../model/student/student-page';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +17,17 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
   list(page = 0, pageSize = 10) {
-    return this.http.get<Student[]>(this.API, { params: { page: page.toString(), pageSize: pageSize.toString() } }).pipe(
+    return this.http.get<StudentPage>(this.API, { params: { page, pageSize } }).pipe(
       first(),
+      //map(data => data.courses),
+      tap(data => (this.cache = data.courses))
     );
   }
 
-
   loadById(id: string) {
     if (this.cache.length > 0) {
-      const record = this.cache.find(studant => studant._id === id);
-      return record ? of(record) : this.getById(id);
+      const record = this.cache.find(course => `${course._id}` === `${id}`);
+      return record != null ? of(record) : this.getById(id);
     }
     return this.getById(id);
   }

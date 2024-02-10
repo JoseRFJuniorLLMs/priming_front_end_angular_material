@@ -1,7 +1,7 @@
-import { Course } from './student';
+import { Student } from './student';
 
-export interface CoursePage {
-  courses: Course[];
+export interface StudentPage {
+  courses: Student[];
   totalElements: number;
   totalPages?: number;
 }
