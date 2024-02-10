@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryPipe } from '../../../../shared/pipes/category.pipe';
-import { ClassroomCollection } from '../../../model/classroom-collection';
+import { ClassroomCollection } from '../../../model/classroom/classroom-collection';
 
 @Component({
   selector: 'app-classrooms-list',

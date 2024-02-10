@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first } from 'rxjs';
-import { PrimeTargetYoutubeCollection } from '../model/prime-target-youtube-collection';
+import { PrimeTargetYoutubeCollection } from '../model/prime/prime-target-youtube-collection';
 
 @Injectable({
   providedIn: 'root'

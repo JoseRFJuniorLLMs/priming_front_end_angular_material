@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryPipe } from '../../../../shared/pipes/category.pipe';
-import { LessonCollection } from '../../../model/lesson-collection';
+import { LessonCollection } from '../../../model/lesson/lesson-collection';
 
 @Component({
   selector: 'app-lessons-list',

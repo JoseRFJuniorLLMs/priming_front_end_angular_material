@@ -8,7 +8,7 @@ import { StudentCollection } from '../model/student-collection';
   providedIn: 'root'
 })
 export class StudentService {
-  private readonly API = AppConfig.urlCourse;
+  private readonly API = AppConfig.urlCourse2;
   
   private cache: StudentCollection[] = [];
 
@@ -23,7 +23,7 @@ export class StudentService {
 
   loadById(id: string) {
     if (this.cache.length > 0) {
-      const record = this.cache.find(studant => studant.id === id);
+      const record = this.cache.find(studant => studant._id === id);
       return record ? of(record) : this.getById(id);
     }
     return this.getById(id);
@@ -34,14 +34,14 @@ export class StudentService {
   }
 
   save(record: Partial<StudentCollection>) {
-    if (record.id) {
+    if (record._id) {
       return this.update(record);
     }
     return this.create(record);
   }
 
   private update(record: Partial<StudentCollection>) {
-    return this.http.put<StudentCollection>(`${this.API}/${record.id}`, record).pipe(first());
+    return this.http.put<StudentCollection>(`${this.API}/${record._id}`, record).pipe(first());
   }
 
   private create(record: Partial<StudentCollection>) {

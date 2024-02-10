@@ -1,5 +1,5 @@
-import { Course } from '../model/course-collection';
-import { CoursePage } from '../model/course-page';
+import { Course } from '../model/couse/course-collection';
+import { CoursePage } from '../model/couse/course-page';
 
 export const coursesMock: Course[] = [
   {

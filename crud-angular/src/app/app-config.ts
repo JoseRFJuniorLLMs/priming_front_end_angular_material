@@ -8,6 +8,6 @@ export class AppConfig {
   public static readonly urlClassroomAluno1 = 'http://localhost:8080/api/aluno/info/65befce78e1080e0c7308781';
   public static readonly urlClassroomAluno2 = 'http://localhost:8080/api/aluno/info/65befd9b8e1080e0c7308784';
   public static readonly urlCourse = 'http://localhost:8080/api/course';
-
+  public static readonly urlCourse2 = 'http://localhost:8080/api/course';
   
 }

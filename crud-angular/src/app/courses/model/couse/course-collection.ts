@@ -1,4 +1,4 @@
-import { LessonCollection } from './lesson-collection';
+import { LessonCollection } from '../lesson/lesson-collection';
 
 export interface Course {
   _id: string;

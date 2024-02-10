@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first } from 'rxjs';
-import { ModuloCollection } from '../model/modulo-collection';
+import { ModuloCollection } from '../model/modulo/modulo-collection';
 
 @Injectable({
   providedIn: 'root'

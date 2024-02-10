@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { Course } from '../model/course-collection';
+import { Course } from '../model/couse/course-collection';
 import { CoursesService } from '../services/courses.service';
 
 @Injectable({

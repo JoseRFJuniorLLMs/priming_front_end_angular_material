@@ -19,8 +19,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute } from '@angular/router';
 
-import { Course } from '../../model/course-collection';
-import { LessonCollection } from '../../model/lesson-collection';
+import { Course } from '../../model/couse/course-collection';
+import { LessonCollection } from '../../model/lesson/lesson-collection';
 import { CoursesService } from '../../services/courses.service';
 import { ErrorDialogComponent } from './../../../shared/components/error-dialog/error-dialog.component';
 import { FormUtilsService } from './../../../shared/services/form-utils.service';

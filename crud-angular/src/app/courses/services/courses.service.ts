@@ -3,15 +3,15 @@ import { Injectable } from '@angular/core';
 import { first, of, tap } from 'rxjs';
 
 import { AppConfig } from 'src/app/app-config';
-import { Course } from '../model/course-collection';
-import { CoursePage } from '../model/course-page';
+import { Course } from '../model/couse/course-collection';
+import { CoursePage } from '../model/couse/course-page';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
   
-  private readonly API = AppConfig.urlCourse;
+  private readonly API = AppConfig.urlCourse2;
 
   private cache: Course[] = [];
 
