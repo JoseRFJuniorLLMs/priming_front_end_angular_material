@@ -19,8 +19,8 @@ export class StudentService {
   list(page = 0, pageSize = 10) {
     return this.http.get<StudentPage>(this.API, { params: { page, pageSize } }).pipe(
       first(),
-      //map(data => data.courses),
-      tap(data => (this.cache = data.courses))
+      //map(data => data.students),
+      tap(data => (this.cache = data.students))
     );
   }
 

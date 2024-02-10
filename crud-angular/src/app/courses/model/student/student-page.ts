@@ -1,7 +1,7 @@
 import { Student } from './student';
 
 export interface StudentPage {
-  courses: Student[];
+  students: Student[];
   totalElements: number;
   totalPages?: number;
 }
