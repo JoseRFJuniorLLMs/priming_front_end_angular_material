@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog'; // Não importe o MatDialog diretamente aqui
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { DialogAnimationsExampleDialog } from './dialog-animations-example-dialog.component';
-import { DialogAnimationsExampleModule } from './dialog-animations-example.module'; // Importe o módulo do componente de diálogo
+import { DialogAnimationsExampleModule } from './dialog-animations-example.module';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,23 @@ import { DialogAnimationsExampleModule } from './dialog-animations-example.modul
     MatTooltipModule,
     RouterLink, 
     RouterOutlet,
-    DialogAnimationsExampleModule // Importe o módulo do componente de diálogo
+    DialogAnimationsExampleModule,
+    MatChipsModule
   ],
   template: `
     <div class="wrapper">
+  
       <!-- Barra superior -->
       <mat-toolbar color="primary">
         <div>{{ displayTime }}</div>
+         <!-- Para Relogio -->
+         <mat-chip-listbox aria-label="Fish selection">
+        <mat-chip-option (click)="startTimer()" color="accent" selected>Start Timer</mat-chip-option>
+        <mat-chip-option (click)="stopTimer()" color="warn">Stop Timer</mat-chip-option>
+       </mat-chip-listbox>
         <span style="flex: 1"></span>
+     
+
         <!-- Espaço flexível para alinhar o botão à direita -->
         <div style="display: flex; justify-content: flex-end;">
           <button mat-icon-button [routerLink]="['/']" style="cursor: pointer">
@@ -62,9 +72,10 @@ export class AppComponent implements OnInit, OnDestroy {
   displayTime: string = '05:00';
   timer: any;
 
-  constructor(private dialog: MatDialog) { } // Injetar MatDialog no construtor
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    // Não inicie o timer automaticamente ao iniciar o componente
     this.startTimer();
   }
 
@@ -73,7 +84,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   startTimer(): void {
-    const duration = 5 * 60; // 5 minutos em segundos
+    this.stopTimer(); // Certifique-se de parar o temporizador antes de iniciar um novo
+    const duration = 5 * 60;
     let remainingSeconds = duration;
 
     this.timer = setInterval(() => {
@@ -83,7 +95,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
       if (remainingSeconds === 0) {
         this.stopTimer();
-        this.openDialog(); // Chamar openDialog quando o tempo acabar
+        this.openDialog();
       } else {
         remainingSeconds--;
       }
