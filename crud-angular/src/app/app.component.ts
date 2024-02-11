@@ -31,8 +31,10 @@ import { DialogAnimationsExampleModule } from './component/dialogWinHoff/dialog-
      <mat-basic-chip>
       <!-- Texto do relógio -->
        {{ displayTime }}
-       <span class="material-icons"  matTooltip="Info: Clock Pomodo"
-             color="primary">alarm_add</span>
+       <span class="material-icons"
+       matTooltip="Info: Clock Pomodo"
+       style="cursor: pointer"
+       color="primary">alarm_add</span>
      </mat-basic-chip>
      </mat-chip-listbox>
 
@@ -41,7 +43,8 @@ import { DialogAnimationsExampleModule } from './component/dialogWinHoff/dialog-
         <mat-chip-listbox aria-label="Fish selection">
          
           <mat-chip-option (click)="startTimer()" 
-          color="accent" style="cursor: pointer" 
+          color="accent" 
+          style="cursor: pointer" 
           matTooltip="Info: Click to view the video!"
           matTooltipClass="example-tooltip-uppercase" 
           selected>Start Pomodoro</mat-chip-option>
@@ -181,7 +184,6 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // Não inicie o timer automaticamente ao iniciar o componente
     this.startTimer();
   }
 
@@ -212,9 +214,14 @@ export class AppComponent implements OnInit, OnDestroy {
     clearInterval(this.timer);
   }
 
+  pauseTimer(): void {
+    clearInterval(this.timer);
+  }
+  
   openDialog(): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      width: '250px'
+      width: '600px',
+      height: '600px'
     });
   }
 }
