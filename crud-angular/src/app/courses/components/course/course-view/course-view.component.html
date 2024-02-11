@@ -1,4 +1,4 @@
-<mat-drawer-container autosize class="example-container">
+<mat-drawer-container class="example-container">
   <mat-drawer #drawer mode="side" opened="true" class="example-sidenav">
     <div>
       <h3>{{ course.name }}</h3>
@@ -15,10 +15,22 @@
     </mat-nav-list>
   </mat-drawer>
 
-  <div class="example-sidenav-content" #youTubePlayer>
+  <div class="example-sidenav-content">
     <youtube-player
       [width]="videoWidth"
       [height]="videoHeight"
       [videoId]="selectedLesson.youtubeUrl"></youtube-player>
   </div>
 </mat-drawer-container>
+
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+    A1
+    </mat-panel-title>
+    <mat-panel-description>
+    B1
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>C1</p>
+</mat-expansion-panel>

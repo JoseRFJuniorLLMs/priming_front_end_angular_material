@@ -18,6 +18,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { Course } from '../../../model/course/course';
 import { Lesson } from '../../../model/lesson/lesson';
 
+
 @Component({
   selector: 'app-course-view',
   templateUrl: './course-view.component.html',

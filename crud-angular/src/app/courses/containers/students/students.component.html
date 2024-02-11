@@ -1,13 +1,13 @@
 <mat-card appearance="outlined">
   <mat-toolbar color="primary">Available Courses</mat-toolbar>
 
-  <div class="mat-elevation-z8" *ngIf="courses$ | async as coursePage; else loading">
-    <app-courses-list
-      [courses]="coursePage.courses"
+  <div class="mat-elevation-z8" *ngIf="students$ | async as coursePage; else loading">
+    <app-students-list
+      [students]="coursePage.students"
       (add)="onAdd()"
       (edit)="onEdit($event)"
       (remove)="onRemove($event)"
-      (view)="onView($event)"></app-courses-list>
+      (view)="onView($event)"></app-students-list>
 
     <mat-paginator
       [pageSizeOptions]="[5, 10, 15]"
@@ -16,7 +16,7 @@
       [pageIndex]="pageIndex"
       [pageSize]="pageSize"
       (page)="refresh($event)"
-      aria-label="Select page of courses"></mat-paginator>
+      aria-label="Select page of students"></mat-paginator>
   </div>
   <ng-template #loading>
     <div class="loading-spinner">

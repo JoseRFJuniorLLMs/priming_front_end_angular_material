@@ -8,9 +8,11 @@ import { PreloadAllModules, provideRouter, withPreloading } from '@angular/route
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
 
+import { MatExpansionModule } from '@angular/material/expansion';
+
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, MatToolbarModule),
+    importProvidersFrom(BrowserModule, MatToolbarModule, MatExpansionModule),
     provideAnimations(),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)) //, withDebugTracing())

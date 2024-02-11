@@ -7,12 +7,14 @@ import { MatTableModule } from '@angular/material/table';
 import { CategoryPipe } from '../../../../shared/pipes/category.pipe';
 import { Course } from '../../../model/course/course';
 
+import { MatExpansionModule } from '@angular/material/expansion';
+
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss'],
   standalone: true,
-  imports: [MatTableModule, MatIconModule, MatButtonModule, CategoryPipe]
+  imports: [MatTableModule, MatIconModule, MatButtonModule, CategoryPipe, MatExpansionModule]
 })
 export class CoursesListComponent {
   @Input() courses: Course[] = [];
@@ -21,6 +23,8 @@ export class CoursesListComponent {
   @Output() remove: EventEmitter<Course> = new EventEmitter(false);
   @Output() add: EventEmitter<boolean> = new EventEmitter(false);
   @Output() view: EventEmitter<Course> = new EventEmitter(false);
+
+  panelOpenState = false;
 
   readonly displayedColumns = ['name', 'category', 'actions'];
 
