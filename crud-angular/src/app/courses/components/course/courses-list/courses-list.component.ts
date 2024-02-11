@@ -8,13 +8,14 @@ import { CategoryPipe } from '../../../../shared/pipes/category.pipe';
 import { Course } from '../../../model/course/course';
 
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss'],
   standalone: true,
-  imports: [MatTableModule, MatIconModule, MatButtonModule, CategoryPipe, MatExpansionModule]
+  imports: [MatTableModule, MatIconModule, MatButtonModule, CategoryPipe, MatExpansionModule, MatTooltipModule]
 })
 export class CoursesListComponent {
   @Input() courses: Course[] = [];

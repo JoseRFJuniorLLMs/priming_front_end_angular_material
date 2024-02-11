@@ -1,5 +1,102 @@
+<mat-table [dataSource]="courses">
+  
+<!-- Name Column -->
+<ng-container matColumnDef="name">
+  <mat-header-cell *matHeaderCellDef>Course</mat-header-cell>
+  <mat-cell *matCellDef="let course"
+            [matTooltip]="'Info: Click to view ' + course.name + ' video!'"
+            matTooltipClass="example-tooltip-uppercase"
+            aria-label="Button that shows a red tooltip"
+            style="cursor: pointer">
+    <a (click)="onView(course)">{{ course.name }}</a>
+  </mat-cell>
+</ng-container>
+
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+    <mat-cell *matCellDef="let course">
+      {{ course.category }}
+      <mat-icon aria-hidden="false" aria-label="Course Category">{{
+        course.category | category
+      }}</mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+
+    <mat-header-cell *matHeaderCellDef class="action-column">
+      <button
+      matTooltip="Info: Add Course"
+      matTooltipClass="example-tooltip-uppercase"
+      aria-label="Button that shows a red tooltip"
+      style="cursor: pointer"
+        mat-mini-fab
+        color="accent"
+        aria-label="Add a new Course"
+        (click)="onAdd()"
+        class="action-column-header">
+        <mat-icon>add</mat-icon>
+      </button>
+     </mat-header-cell>
+
+    <mat-cell *matCellDef="let course" class="action-column">
+
+        <button (click)="onView(course)"
+        [matTooltip]="'Info: Click to view ' + course.name + ' video!'"
+        matTooltipClass="example-tooltip-uppercase"
+        aria-label="Button that shows a red tooltip"
+        style="cursor: pointer"
+        mat-mini-fab
+        color="accent"
+        aria-label="Add a new Course"
+        class="action-column-header">
+        <mat-icon>ondemand_video</mat-icon>
+      </button>
+      <button
+      matTooltip="Info: Edit Course"
+      matTooltipClass="example-tooltip-uppercase"
+      aria-label="Button that shows a red tooltip"
+      style="cursor: pointer"
+        mat-icon-button
+        color="primary"
+        aria-label="Update Course"
+        (click)="onEdit(course)">
+        <mat-icon>edit</mat-icon>
+      </button>
+<!-- 
+      <button
+        mat-icon-button
+        color="warn"
+        aria-label="Remove Course"
+        (click)="onRemove(course)">
+        <mat-icon>delete</mat-icon>
+      </button>-->
+    
+   </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
 <mat-accordion>
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        This is the expansion title
+
+      </mat-panel-title>
+      <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Self aware panel
@@ -11,56 +108,5 @@
     <p>I'm visible because I am open</p>
   </mat-expansion-panel>
 </mat-accordion>
-
-<div style="overflow-x: auto;">
-  <mat-table [dataSource]="courses">
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Course</mat-header-cell>
-      <mat-cell *matCellDef="let course">
-        <a (click)="onView(course)">{{ course.name }}</a>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Category Column -->
-    <ng-container matColumnDef="category">
-      <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
-      <mat-cell *matCellDef="let course">
-        {{ course.category }}
-        <mat-icon aria-hidden="false" aria-label="Course Category">
-          {{ course.category | category }}
-        </mat-icon>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef class="action-column">
-        <button mat-mini-fab color="accent" aria-label="Add a new Course" (click)="onAdd()" class="action-column-header">
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-header-cell>
-
-      <mat-cell *matCellDef="let course" class="action-column">
-        <button class="action-column" (click)="onView(course)" style="cursor: pointer" mat-mini-fab matTooltip="Info about the action" color="primary" aria-label="Add a new Course" class="action-column-header">
-          <mat-icon>ondemand_video</mat-icon>
-        </button>
-
-        <button mat-icon-button color="primary" aria-label="Update Course" (click)="onEdit(course)">
-          <mat-icon>edit</mat-icon>
-        </button>
-
-     <!--   <button mat-icon-button color="warn" aria-label="Remove Course" (click)="onRemove(course)">
-          <mat-icon>delete</mat-icon>
-        </button>-->
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
-  </mat-table>
-</div>
 
 
