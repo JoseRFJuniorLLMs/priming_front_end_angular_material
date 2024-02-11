@@ -1,0 +1,21 @@
+<!-- dialog-animations-example-dialog.component.html -->
+<h1 mat-dialog-title>Now you will relax for 5 minutes!</h1>
+<div mat-dialog-content class="dialog-content">
+  <!-- Adicione o vídeo do YouTube aqui -->
+  <iframe src="https://www.youtube.com/embed/UJBknAsxfrA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Close</button>
+</div>
+
+<h2 mat-dialog-title>Dialog with elements</h2>
+<mat-dialog-content>This dialog showcases the title, close, content and actions elements.</mat-dialog-content>
+
+<div mat-dialog-content class="dialog-content">
+  <!-- Adicione o vídeo do YouTube aqui -->
+  <iframe src="https://www.youtube.com/embed/UJBknAsxfrA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

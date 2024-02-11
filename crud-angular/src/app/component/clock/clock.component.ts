@@ -6,7 +6,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./clock.component.scss'],
 })
 export class ClockComponent implements OnInit, OnDestroy {
-  displayTime: string = '45:00';
+  displayTime: string = '01:00';
   timer: any;
 
   constructor() { }
@@ -20,7 +20,7 @@ export class ClockComponent implements OnInit, OnDestroy {
   }
 
   startTimer(): void {
-    const duration = 45 * 60; // 45 minutes in seconds
+    const duration = 1 * 60; // 45 minutes in seconds
     let remainingSeconds = duration;
 
     this.timer = setInterval(() => {
@@ -42,7 +42,6 @@ export class ClockComponent implements OnInit, OnDestroy {
   }
 
   openDialog(): void {
-    // Implement your openDialog logic here
     console.log('Time is up! Opening dialog...');
   }
 }

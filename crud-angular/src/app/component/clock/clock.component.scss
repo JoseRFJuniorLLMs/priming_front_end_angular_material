@@ -1,0 +1,15 @@
+:host {
+  display: inline-block;
+  font-size: 30px; /* Tamanho da fonte maior */
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  animation: blink-animation 1s infinite; /* Animação de piscar */
+}
+
+@keyframes blink-animation {
+  0% { opacity: 1; } /* Opacidade total */
+  50% { opacity: 0; } /* Opacidade zero */
+  100% { opacity: 1; } /* Opacidade total novamente */
+}
