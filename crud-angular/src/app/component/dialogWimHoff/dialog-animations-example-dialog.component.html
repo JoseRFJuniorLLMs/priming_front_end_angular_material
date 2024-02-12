@@ -1,0 +1,31 @@
+<!-- dialog-animations-example-dialog.component.html -->
+<h1 mat-dialog-title>Now you will relax for 5 minutes!</h1>
+<h1 mat-dialog-title>Wim Hoff</h1>
+<div mat-dialog-content class="dialog-content">
+  <!-- Adicione o vídeo do YouTube aqui -->
+  <div class="panel">
+    <iframe src="https://www.youtube.com/embed/UJBknAsxfrA" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+</div>
+<div mat-dialog-actions>
+ 
+ <span class="material-icons"  mat-button (click)="dialogRef.close()"  
+  color="warn" 
+  style="cursor: pointer" 
+  matTooltip="Info: Reported benefits of the Wim Hof Method include:
+  Increased energy and vitality
+  Reduced stress and anxiety
+  Improved concentration and focus
+  Strengthening of the immune system
+  Improved cardiovascular health
+  Increased cold resistance!"
+  matTooltipClass="example-tooltip-uppercase" >
+    exit_to_app
+    </span> Close
+</div>

@@ -5,8 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { DialogAnimationsExampleDialog } from './component/dialogWinHoff/dialog-animations-example-dialog.component';
-import { DialogAnimationsExampleModule } from './component/dialogWinHoff/dialog-animations-example.module';
+import { DialogAnimationsExampleDialog } from './component/dialogWimHoff/dialog-animations-example-dialog.component';
+import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-animations-example.module';
 
 @Component({
   selector: 'app-root',
@@ -31,8 +31,8 @@ import { DialogAnimationsExampleModule } from './component/dialogWinHoff/dialog-
      <mat-basic-chip>
       <!-- Texto do relógio -->
        {{ displayTime }}
-       <span class="material-icons"
-       matTooltip="Info: Clock Pomodo"
+       <span class="material-icons" (click)="pauseTimer()" 
+       matTooltip="Info: Pause Pomodoro"
        style="cursor: pointer"
        color="primary">alarm_add</span>
      </mat-basic-chip>
@@ -45,15 +45,15 @@ import { DialogAnimationsExampleModule } from './component/dialogWinHoff/dialog-
           <mat-chip-option (click)="startTimer()" 
           color="accent" 
           style="cursor: pointer" 
-          matTooltip="Info: Click to view the video!"
+          matTooltip="Info: Click to start!"
           matTooltipClass="example-tooltip-uppercase" 
           selected>Start Pomodoro</mat-chip-option>
           <mat-icon>self_improvement</mat-icon>
 
-          <mat-chip-option (click)="stopTimer()" 
+          <mat-chip-option (click)="stopTimer()" (click)="openDialog()"
           color="warn" 
           style="cursor: pointer" 
-          matTooltip="Info: Click to stop the video!"
+          matTooltip="Info: Click to pause!"
           matTooltipClass="example-tooltip-uppercase">Stop Pomodo</mat-chip-option>
           <mat-icon>pan_tool</mat-icon>
         </mat-chip-listbox>
@@ -191,37 +191,69 @@ export class AppComponent implements OnInit, OnDestroy {
     this.stopTimer();
   }
 
-  startTimer(): void {
-    this.stopTimer(); // Certifique-se de parar o temporizador antes de iniciar um novo
-    const duration = 1 * 60;
-    let remainingSeconds = duration;
+  paused: boolean = false;
+remainingSeconds: number = 0; // Armazena os segundos restantes quando o timer é pausado
 
+startTimer(): void {
+  if (this.paused) {
+    // Se estiver pausado, continue de onde parou
     this.timer = setInterval(() => {
-      const minutes = Math.floor(remainingSeconds / 60);
-      const seconds = remainingSeconds % 60;
+      const minutes = Math.floor(this.remainingSeconds / 60);
+      const seconds = this.remainingSeconds % 60;
       this.displayTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-      if (remainingSeconds === 0) {
+      if (this.remainingSeconds === 0) {
         this.stopTimer();
         this.openDialog();
       } else {
-        remainingSeconds--;
+        this.remainingSeconds--;
+      }
+    }, 1000);
+  } else {
+    // Se não estiver pausado, inicie um novo timer
+    this.stopTimer(); // Certifique-se de parar o temporizador antes de iniciar um novo
+    const duration = 1 * 60;
+    this.remainingSeconds = duration;
+
+    this.timer = setInterval(() => {
+      const minutes = Math.floor(this.remainingSeconds / 60);
+      const seconds = this.remainingSeconds % 60;
+      this.displayTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+      if (this.remainingSeconds === 0) {
+        this.stopTimer();
+        this.openDialog();
+      } else {
+        this.remainingSeconds--;
       }
     }, 1000);
   }
+}
 
-  stopTimer(): void {
-    clearInterval(this.timer);
-  }
+stopTimer(): void {
+  clearInterval(this.timer);
+}
 
-  pauseTimer(): void {
-    clearInterval(this.timer);
-  }
+pauseTimer(): void {
+  clearInterval(this.timer);
+  this.paused = true;
+}
+
+continueTimer(): void {
+  if (!this.paused) return;
+
+  // Reinicie o timer com o tempo restante
+  this.startTimer();
+  this.paused = false;
+}
+
+  
+  
   
   openDialog(): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
-      width: '600px',
-      height: '600px'
+      width: '!00%',
+      height: '100%'
     });
   }
 }
