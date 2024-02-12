@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { BitcoinModule } from '../app/component/bitcoin/bitcoin.module';
 import { DialogAnimationsExampleDialog } from './component/dialogWimHoff/dialog-animations-example-dialog.component';
 import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-animations-example.module';
 
@@ -18,13 +19,15 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
     RouterLink,
     RouterOutlet,
     DialogAnimationsExampleModule,
-    MatChipsModule
+    MatChipsModule,
+    BitcoinModule
   ],
   template: `
     <div class="wrapper">
       <!-- Barra superior -->
       <mat-toolbar color="primary">
-      
+      <!-- app.component.html ou qualquer outro componente onde você deseja usar o componente Bitcoin -->
+  
       <!-- Relogio -->
       <mat-chip-listbox>
       <!-- Ícone do relógio -->
@@ -37,11 +40,9 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
        color="primary">alarm_add</span>
      </mat-basic-chip>
      </mat-chip-listbox>
-
-
         <!-- Para Relogio -->
         <mat-chip-listbox aria-label="Fish selection">
-         
+  
           <mat-chip-option (click)="startTimer()" 
           color="accent" 
           style="cursor: pointer" 
@@ -149,6 +150,16 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
             <mat-icon>tips_and_updates</mat-icon>
           </button>
         </div>
+
+        <app-bitcoin  style="cursor: pointer"
+            class="action-column"
+            mat-mini-fab
+            matTooltip="Bitcoin"
+            color="primary"
+            [routerLink]="['students']"
+            color="accent"
+            aria-label="Bitcoin"></app-bitcoin> <!-- Incluindo o componente Bitcoin -->
+
       </mat-toolbar>
 
       <!-- Conteúdo do aplicativo -->
@@ -178,7 +189,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
   ]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  displayTime: string = '01:00';
+  displayTime: string = '25:00';
   timer: any;
 
   constructor(private dialog: MatDialog) { }
@@ -212,7 +223,7 @@ startTimer(): void {
   } else {
     // Se não estiver pausado, inicie um novo timer
     this.stopTimer(); // Certifique-se de parar o temporizador antes de iniciar um novo
-    const duration = 1 * 60;
+    const duration = 25 * 60;
     this.remainingSeconds = duration;
 
     this.timer = setInterval(() => {
