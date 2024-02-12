@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Importe MatSnackBar aqui
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -34,7 +35,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
      <mat-basic-chip>
       <!-- Texto do relógio -->
        {{ displayTime }}
-       <span class="material-icons" (click)="pauseTimer()" 
+       <span class="material-icons" (click)="pauseTimer()" (click)="openSnackBar()"
        matTooltip="Info: Pause Pomodoro"
        style="cursor: pointer"
        color="primary">alarm_add</span>
@@ -43,7 +44,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
         <!-- Para Relogio -->
         <mat-chip-listbox aria-label="Fish selection">
   
-          <mat-chip-option (click)="startTimer()" 
+          <mat-chip-option (click)="startTimer()" (click)="openSnackBar()"
           color="accent" 
           style="cursor: pointer" 
           matTooltip="Info: Click to start!"
@@ -51,7 +52,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
           selected>Start Pomodoro</mat-chip-option>
           <mat-icon>self_improvement</mat-icon>
 
-          <mat-chip-option (click)="stopTimer()" (click)="openDialog()"
+          <mat-chip-option (click)="stopTimer()" (click)="openDialog()" (click)="openSnackBar()"
           color="warn" 
           style="cursor: pointer" 
           matTooltip="Info: Click to pause!"
@@ -62,7 +63,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
         <span style="flex: 1"></span>
 
         <!-- Espaço flexível para alinhar o botão à direita -->
-        <button
+        <button (click)="openDialog()" (click)="openSnackBar()"
             style="cursor: pointer"
             matTooltip="Info: Click to view the video!"
             matTooltipClass="example-tooltip-uppercase"
@@ -77,7 +78,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
             <mat-icon>self_improvement</mat-icon>
           </button>
 
-          <button
+          <button  (click)="openSnackBar()"
             style="cursor: pointer"
             class="action-column"
             mat-mini-fab
@@ -88,8 +89,8 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
             aria-label="Add a new Course">
             <mat-icon>ondemand_video</mat-icon>
           </button>
-
-          <button
+ 
+          <button (click)="openSnackBar()"
             style="cursor: pointer"
             class="action-column"
             mat-mini-fab
@@ -101,7 +102,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
             <mat-icon>voice_chat</mat-icon>
           </button>
 
-          <button
+          <button (click)="openSnackBar()"
             style="cursor: pointer"
             class="action-column"
             mat-mini-fab
@@ -113,7 +114,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
             <mat-icon>play_circle_filled</mat-icon>
           </button>
 
-          <button
+          <button (click)="openSnackBar()"
             style="cursor: pointer"
             class="action-column"
             mat-mini-fab
@@ -124,7 +125,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
             aria-label="Add a new Course">
             <mat-icon>60fps</mat-icon>
           </button>
-          <button
+          <button (click)="openSnackBar()"
             style="cursor: pointer"
             class="action-column"
             mat-mini-fab
@@ -135,7 +136,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
             aria-label="Add a new Course">
             <mat-icon>30fps_select</mat-icon>
           </button>
-          <button
+          <button (click)="openSnackBar()"
             style="cursor: pointer"
             class="action-column"
             mat-mini-fab
@@ -152,7 +153,7 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
           </button>
         </div>
 
-        <app-bitcoin  style="cursor: pointer"
+        <app-bitcoin  style="cursor: pointer" (click)="openSnackBar()"
             class="action-column"
             mat-mini-fab
             matTooltip="Bitcoin"
@@ -192,8 +193,9 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
 export class AppComponent implements OnInit, OnDestroy {
   displayTime: string = '25:00';
   timer: any;
+  durationInSeconds: number = 5; // Defina a propriedade durationInSeconds aqui
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.startTimer();
@@ -259,13 +261,18 @@ continueTimer(): void {
   this.paused = false;
 }
 
-  
-  
-  
+     
   openDialog(): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
       width: '!00%',
       height: '100%'
+    });
+  }
+
+
+  openSnackBar(): void {
+    this._snackBar.open('(((((((((((((((((( OK ))))))))))))))))))!', 'Dismiss', {
+      duration: 5000
     });
   }
 }
