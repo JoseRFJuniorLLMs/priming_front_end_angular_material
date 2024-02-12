@@ -55,7 +55,8 @@ import { DialogAnimationsExampleModule } from './component/dialogWimHoff/dialog-
           color="warn" 
           style="cursor: pointer" 
           matTooltip="Info: Click to pause!"
-          matTooltipClass="example-tooltip-uppercase">Stop Pomodo</mat-chip-option>
+          matTooltip="Info: Click to pause!"
+          matTooltipClass="example-tooltip-uppercase">Pause Pomodo</mat-chip-option>
           <mat-icon>pan_tool</mat-icon>
         </mat-chip-listbox>
         <span style="flex: 1"></span>
