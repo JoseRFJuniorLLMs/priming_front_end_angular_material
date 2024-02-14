@@ -1,65 +1,33 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  NO_ERRORS_SCHEMA,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { ActivatedRoute } from '@angular/router';
 
-import { NgFor, NgIf } from '@angular/common';
-import { YouTubePlayerModule } from '@angular/youtube-player';
-import { Student } from '../../../model/student/student';
+import { Student } from '../../../model/course/components/student/student-view/StudentViewComponent'; // Importe a interface Student corretamente
 
 @Component({
   selector: 'app-student-view',
   templateUrl: './student-view.component.html',
   styleUrls: ['./student-view.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NgIf,
-    NgFor,
-    MatSidenavModule,
-    MatButtonModule,
-    MatListModule,
-    YouTubePlayerModule
-  ],
-  schemas: [NO_ERRORS_SCHEMA]
+  imports: [MatListModule]
 })
-export class CourseViewComponent implements OnInit, AfterViewInit {
+export class StudentViewComponent implements OnInit, AfterViewInit {
   student!: Student;
-  videoHeight!: number;
-  videoWidth!: number;
-
-  @ViewChild('youTubePlayer') youTubePlayer!: ElementRef<HTMLDivElement>;
+  
+  @ViewChild('youtubePlayer') youtubePlayer!: ElementRef<HTMLDivElement>; // Substitua 'youtubePlayer' pelo nome correto do seu elemento
 
   constructor(
     private route: ActivatedRoute,
-    private changeDetectorRef: ChangeDetectorRef) { }
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    this.student = this.route.snapshot.data['student'];
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
+    this.student = this.route.snapshot.data['student']; // Supondo que você está obtendo os dados do estudante da rota
+
+    // Aqui você pode realizar qualquer outra inicialização necessária
   }
 
   ngAfterViewInit(): void {
-    this.onResize();
-    window.addEventListener('resize', this.onResize.bind(this));
+    // Se você precisa fazer algo após a visualização do componente, faça aqui
   }
-
-  onResize(): void {
-    this.videoWidth = this.youTubePlayer.nativeElement.clientWidth * 0.9;
-    this.videoHeight = this.videoWidth * 0.6;
-    this.changeDetectorRef.detectChanges();
-  }
-
 }

@@ -10,7 +10,7 @@ import { StudentPage } from '../model/student/student-page';
   providedIn: 'root'
 })
 export class StudentService {
-  private readonly API = AppConfig.urlCourse2;
+  private readonly API = AppConfig.urlAlunoInfo2;
   
   private cache: Student[] = [];
 
@@ -18,8 +18,8 @@ export class StudentService {
 
   list(page = 0, pageSize = 10) {
     return this.http.get<StudentPage>(this.API, { params: { page, pageSize } }).pipe(
+      tap(data => console.log('Data from API:', data)), // Aqui você imprime o valor que vem da API
       first(),
-      //map(data => data.students),
       tap(data => (this.cache = data.students))
     );
   }
